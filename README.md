@@ -69,11 +69,11 @@ Now in your browser, you should see a simple translation app with a singular tex
 
 If you type whatever english phrase into the text box, and click translate, the app should translate your english phrase into french, and output different results based on the toxicivity and nature of the english phrase you entered. Here is an example 
 
-![naked translation app](/images/clean_app_example.png)
+![clean translation example](/images/clean_app_example.png)
 
 Here is a toxic example:
 
-![naked translation app](/images/toxic_app_exmaple.png)
+![toxic translation example](/images/toxic_app_exmaple.png)
 
 Notes:
     - While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
