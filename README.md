@@ -17,7 +17,7 @@ git clone https://github.com/DanielLi03/DSC180a-Q1.git
 Next we need to create a conda environment. So open up an anaconda terminal, and run the following command (replace [name] with the name the your envirnment that you'd like)
 
 ```
-conda create -n [name]
+conda create -n [name] python=3.11.9
 ```
 
 We also need to install the dependencies, so we first activate the conda environment in the ananconda terminal as follows:
@@ -63,4 +63,18 @@ If that doesn't work, run
 python -m streamlit run app.py
 ```
 
-Now in your browser, you should see a simple translation app with a singular textbox
+Now in your browser, you should see a simple translation app with a singular textbox as below:
+
+![naked translation app](/images/app.png)
+
+If you type whatever english phrase into the text box, and click translate, the app should translate your english phrase into french, and output different results based on the toxicivity and nature of the english phrase you entered. Here is an example 
+
+![naked translation app](/images/clean_app_example.png)
+
+Here is a toxic example:
+
+![naked translation app](/images/toxic_app_exmaple.png)
+
+Notes:
+    - While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
+    - Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the lenght of your prompt).
