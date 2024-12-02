@@ -1,0 +1,5 @@
+alt-profanity-check==1.5.2
+detoxify==0.5.2
+pandas==2.0.2
+streamlit==1.40.2
+transformers==4.30.2
