@@ -17,30 +17,40 @@ def detoxify_test(text):
 def profanity_test(text):
     return predict([text]) == 1
 
-def tests(text, translation):
-    if detoxify_test(text):
-        st.success("Translation blocked by detoxify")
+def tests(detoxify, profanity, translation):
+    st.warning("Translation Response With Detoxify Guardrail")
+    if detoxify:
+        st.success("Translation blocked by Detoxify")
     else:
         st.success(translation)
     
-    if profanity_test(text):
-        st.success("Translation blocked by profanity check")
+    st.warning("Translation Response With Profanity Check Guardrail")
+    if profanity:
+        st.success("Translation blocked by Profanity Check")
+    else:
+        st.success(translation)
+    
+    st.warning("Final Output")
+    if detoxify or profanity:
+        st.success("Translation was blocked by Guardrail")
     else:
         st.success(translation)
 
 def main():
-    st.title("Guardrails Implementation in LLMs")
+    st.title("Guardrails Implementation in Translation LLMs")
 
     text_area = st.text_area("Enter your text that you want to translate!")
 
     if st.button("Translate"):
         if len(text_area) > 0:
-            st.info(text_area)
+            st.info("Input: " + text_area)
             st.warning("Translation Response Without Guardrails")
             without_gruardrails_result = without_gruardrails(text_area)
             st.success(without_gruardrails_result)
-            st.warning("Translation Response With Guardrails")
-            tests(text_area, without_gruardrails_result)
+            detoxify_result = detoxify_test(text_area)
+            profanity_result = profanity_test(text_area)
+            tests(detoxify_result, profanity_result, without_gruardrails_result)
+
 
 if __name__ == '__main__': 
     main()
