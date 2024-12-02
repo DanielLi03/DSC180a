@@ -43,8 +43,24 @@ For the long_toxic_test.py, simply run in your conda environment.
 python long_toxic_test.py
 ```
 
-Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be two dictionaries containing various metrics on the accuracy of the toxicitiy classification of detoxify and profanity_check. The first dictionary corresponds to the results of profanity_check, and the second more detailed dictionary corresponds to the results of detoxify. If run correctly, we should expect the following results in the terminal for the short and long tests respectively:
+Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be two dictionaries containing various metrics on the accuracy of the toxicitiy classification of detoxify and profanity_check. The first dictionary corresponds to the results of profanity_check, and the second more detailed dictionary corresponds to the results of detoxify. If run correctly, we should expect the following results in the terminal for the short test nad long test respectively:
 
 ![short toxic test results](/images/short_test_results.png)
+
+
 ![long toxic test results](/images/long_test_results.png)
+
 ## How to Run App.py
+To run the actual app, again, we need to activate the anaconda environment and navigate to the github repo. In our conda terminal, run
+
+```
+streamlit run app.py
+```
+
+If that doesn't work, run 
+
+```
+python -m streamlit run app.py
+```
+
+Now in your browser, you should see a simple translation app with a singular textbox
