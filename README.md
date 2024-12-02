@@ -76,5 +76,5 @@ Here is a toxic example:
 ![toxic translation example](/images/toxic_app_example.png)
 
 Notes:
-    - While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
-    - Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the lenght of your prompt).
+- While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
+- Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the lenght of your prompt).
