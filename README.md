@@ -73,7 +73,7 @@ If you type whatever english phrase into the text box, and click translate, the 
 
 Here is a toxic example:
 
-![toxic translation example](/images/toxic_app_exmaple.png)
+![toxic translation example](/images/toxic_app_example.png)
 
 Notes:
     - While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
