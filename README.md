@@ -6,6 +6,8 @@ My Quarter 1 Guardrail Replication Project focused on implementing a profanity a
 ## Files Overview
 
 ## How to Install and Setup
+To run this project, we need to install both Python and Anaconda onto our device, so please make sure you have that installed. Once you have those two installed, you can proceed to the next step.
+
 First we need to clone the respository. So open up a terminal, navigate to the desired folder and clone the respository as follows:
 
 ```
@@ -28,10 +30,10 @@ Now that our conda environment is active, in the same terminal, run the followin
 pip install -r requirements.txt
 ```
 
-All our packages should be installed in our anaconda environment so we should be ready to run the code now
+By now, all our packages should be installed in our anaconda environment so we should be ready to run the code now
 
 ## How to Run Tests
-To run both the short and long toxic tests, activate the anaconda environment that you've created above. Navigate the github repo on your local device in the conda terminal, and run the python file as follows:
+To run both the short and long toxic tests, activate the anaconda environment that you've created above in an anaconda terminal. Navigate the github repo on your local device in the conda terminal, and run the python file as follows:
 ```
 python short_toxic_test.py
 ```
@@ -41,7 +43,8 @@ For the long_toxic_test.py, simply run in your conda environment.
 python long_toxic_test.py
 ```
 
-Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be two dictionaries containing various metrics on the accuracy of the toxicitiy classification of detoxify and profanity_check. The first dictionary corresponds to the results of profanity_check, and the second more detailed dictionary corresponds to the results of detoxify. If run correctly, we should expect the following results in the terminal:
+Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be two dictionaries containing various metrics on the accuracy of the toxicitiy classification of detoxify and profanity_check. The first dictionary corresponds to the results of profanity_check, and the second more detailed dictionary corresponds to the results of detoxify. If run correctly, we should expect the following results in the terminal for the short and long tests respectively:
 
-
+![short toxic test results](/images/short_test_results.png)
+![long toxic test results](/images/long_test_results.png)
 ## How to Run App.py
