@@ -11,7 +11,7 @@ def without_gruardrails(text):
 
 # function to run detoxify guardrail
 def detoxify_test(text):
-    results_detoxify = Detoxify('original').predict(without_gruardrails(text))
+    results_detoxify = Detoxify('unbiased').predict(without_gruardrails(text))
     # return true if one of the toxicity categories is over 0.5
     if (max(results_detoxify.values()) > 0.5):
         return True

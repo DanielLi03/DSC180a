@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from detoxify import Detoxify
 from profanity_check import predict
 
@@ -38,3 +39,15 @@ detoxify_TP = sum(((i == j) and (j == 1)) for i, j in zip(df_results['toxicity']
 
 # print detoxify result as a dicitionary
 print({'Overall Accuracy': detoxify_accuracy, 'True Positive Rate': detoxify_TP, 'True Negative Rate': detoxify_TN})
+
+# compile results if we ran both guardrails in succession
+combined_results = np.array(df_results['toxicity']) + np.array(profanity_check_results)
+combined_results = [1 if i > 0 else i for i in combined_results]
+
+# calculate final results
+final_accuracy = sum(i == j for i, j in zip(combined_results, toxicity)) / len(combined_results)
+final_TN = sum(((i == j) and (j == 0)) for i, j in zip(combined_results, toxicity)) / (len(toxicity) - sum(toxicity))
+final_TP = sum(((i == j) and (j == 1)) for i, j in zip(combined_results, toxicity)) / (sum(toxicity))
+
+# print final results as a dictionary
+print({'Overall Accuracy': final_accuracy, 'True Positive Rate': final_TP, 'True Negative Rate': final_TN})

@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from detoxify import Detoxify
 from profanity_check import predict
 
@@ -51,15 +52,27 @@ def toxic_type_result(col):
     else:
         return 'Not enough data'
 
-# compile results
+# compile detoxify results
 detoxify_severe_toxicity_accuracy = toxic_type_result('severe_toxicity')
 detoxify_obscene_accuracy = toxic_type_result('obscene')
 detoxify_threat_accuracy = toxic_type_result('threat')
 detoxify_insult_accuracy = toxic_type_result('insult')
 detoxify_identity_attack_accuracy = toxic_type_result('identity_attack')
 
-# output results
+# output detoxify results
 print({'Overall Accuracy': detoxify_accuracy, 'True Positive Rate': detoxify_TP, 'True Negative Rate': detoxify_TN, \
 'Severe Toxicity Accuracy': detoxify_severe_toxicity_accuracy, 'Obscene Accuracy': detoxify_obscene_accuracy, \
 'Threat Accuracy': detoxify_threat_accuracy, 'Insult Accuracy': detoxify_insult_accuracy, \
 'Identity Attack Accuracy': detoxify_identity_attack_accuracy})
+
+# compile results if we ran both guardrails in succession
+combined_results = np.array(df_results['toxicity']) + np.array(profanity_check_results)
+combined_results = [1 if i > 0 else i for i in combined_results]
+
+# calculate final results
+final_accuracy = sum(i == j for i, j in zip(combined_results, toxicity)) / len(combined_results)
+final_TN = sum(((i == j) and (j == 0)) for i, j in zip(combined_results, toxicity)) / (len(toxicity) - sum(toxicity))
+final_TP = sum(((i == j) and (j == 1)) for i, j in zip(combined_results, toxicity)) / (sum(toxicity))
+
+# print final results as a dictionary
+print({'Overall Accuracy': final_accuracy, 'True Positive Rate': final_TP, 'True Negative Rate': final_TN})
