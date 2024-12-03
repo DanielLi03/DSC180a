@@ -23,24 +23,14 @@ def profanity_test(text):
 
 # function to return approriate output based on detoxify and profanity check results
 def tests(detoxify, profanity, translation):
-    # detoxify output
-    st.warning("Translation Response With Detoxify Guardrail")
-    if detoxify:
-        st.success("Translation blocked by Detoxify")
-    else:
-        st.success(translation)
-    
-    # profanity check output
-    st.warning("Translation Response With Profanity Check Guardrail")
-    if profanity:
-        st.success("Translation blocked by Profanity Check")
-    else:
-        st.success(translation)
-    
-    # final output
-    st.warning("Final Output")
-    if detoxify or profanity:
-        st.success("Translation was blocked by Guardrail")
+    # check if input passes the guardrails and output appropriate response
+    st.warning("Translation Response")
+    if detoxify and profanity:
+        st.success("Translation was blocked by Detoxify and Profanity Check Guardrail")
+    elif detoxify:
+        st.success("Translation was blocked by Detoxify Guardrail")
+    elif profanity:
+        st.success("Translation was blocked by Profanity Check Guardrail")
     else:
         st.success(translation)
 
