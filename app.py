@@ -11,7 +11,7 @@ def without_gruardrails(text):
 
 # function to run detoxify guardrail
 def detoxify_test(text):
-    results_detoxify = Detoxify('unbiased').predict(without_gruardrails(text))
+    results_detoxify = Detoxify('unbiased').predict(text)
     # return true if one of the toxicity categories is over 0.5
     if (max(results_detoxify.values()) > 0.5):
         return True
@@ -24,7 +24,7 @@ def profanity_test(text):
 # function to return approriate output based on detoxify and profanity check results
 def tests(detoxify, profanity, translation):
     # check if input passes the guardrails and output appropriate response
-    st.warning("Translation Response")
+    st.warning("Translation Response with Guardrails")
     if detoxify and profanity:
         st.success("Translation was blocked by Detoxify and Profanity Check Guardrail")
     elif detoxify:

@@ -8,7 +8,7 @@ df = pd.read_csv('test_public_expanded.csv.zip', compression='zip')
 df = df[['comment_text', 'toxicity', 'severe_toxicity', 'obscene', 'threat', 'insult', 'identity_attack']]
 
 # relevant row extraction to balance and get the data
-first_20 = df.head(100)
+first_20 = df.head(200)
 severe_toxicity = df[df['severe_toxicity'] > 0.5].head(50)
 obscene = df[df['obscene'] > 0.5].head(50)
 threat = df[df['threat'] > 0.5].head(50)
