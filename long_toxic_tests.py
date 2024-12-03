@@ -90,10 +90,31 @@ print({'Overall Accuracy': detoxify_accuracy, 'True Positive Rate': detoxify_TP,
 combined_results = np.array(df_results['toxicity']) + np.array(profanity_check_results)
 combined_results = [1 if i > 0 else i for i in combined_results]
 
-# calculate final results
-final_accuracy = sum(i == j for i, j in zip(combined_results, toxicity)) / len(combined_results)
-final_TN = sum(((i == j) and (j == 0)) for i, j in zip(combined_results, toxicity)) / (len(toxicity) - sum(toxicity))
-final_TP = sum(((i == j) and (j == 1)) for i, j in zip(combined_results, toxicity)) / (sum(toxicity))
+# calculate combined results
+combined_accuracy = sum(i == j for i, j in zip(combined_results, toxicity)) / len(combined_results)
+combined_TN = sum(((i == j) and (j == 0)) for i, j in zip(combined_results, toxicity)) / (len(toxicity) - sum(toxicity))
+combined_TP = sum(((i == j) and (j == 1)) for i, j in zip(combined_results, toxicity)) / (sum(toxicity))
 
-# print final results as a dictionary
-print({'Overall Accuracy': final_accuracy, 'True Positive Rate': final_TP, 'True Negative Rate': final_TN})
+# add combined results to df
+df['combined_results'] = combined_results
+
+# function to check the accuracy of the combined guardrail within each type of toxicity
+def combined_toxic_type_result(col):
+    if len(df[df[col] == 1]) > 0:
+        return sum(i == j for i, j in zip(df[df[col] == 1]['combined_results'], df[df[col] == 1]['toxicity'])) / len(df[df[col] == 1]['toxicity'])
+    else:
+        return 'Not enough data'
+
+# compile combined results
+combined_severe_toxicity_accuracy = combined_toxic_type_result('severe_toxicity')
+combined_obscene_accuracy = combined_toxic_type_result('obscene')
+combined_threat_accuracy = combined_toxic_type_result('threat')
+combined_insult_accuracy = combined_toxic_type_result('insult')
+combined_identity_attack_accuracy = combined_toxic_type_result('identity_attack')
+
+# output combined results
+print({'Overall Accuracy': combined_accuracy, 'True Positive Rate': combined_TP, 'True Negative Rate': combined_TN, \
+'Severe Toxicity Accuracy': combined_severe_toxicity_accuracy, 'Obscene Accuracy': combined_obscene_accuracy, \
+'Threat Accuracy': combined_threat_accuracy, 'Insult Accuracy': combined_insult_accuracy, \
+'Identity Attack Accuracy': combined_identity_attack_accuracy})
+

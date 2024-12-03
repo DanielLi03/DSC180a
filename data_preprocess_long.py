@@ -8,12 +8,12 @@ df = pd.read_csv('train.csv.zip', compression='zip')
 df = df[['comment_text', 'toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']]
 
 # relevant row extraction to balance and get the data
-first_100 = df.head(200)
-severe_toxic = df[df['severe_toxic'] > 0.5].head(50)
-obscene = df[df['obscene'] > 0.5].head(50)
-threat = df[df['threat'] > 0.5].head(50)
-insult = df[df['insult'] > 0.5].head(50)
-identity_hate = df[df['identity_hate'] > 0.5 ].head(50)
+first_100 = df.head(150)
+severe_toxic = df[df['severe_toxic'] > 0.5].head(30)
+obscene = df[df['obscene'] > 0.5].head(30)
+threat = df[df['threat'] > 0.5].head(30)
+insult = df[df['insult'] > 0.5].head(30)
+identity_hate = df[df['identity_hate'] > 0.5 ].head(30)
 combined_df = pd.concat([first_100, severe_toxic, obscene, threat, insult, identity_hate]).drop_duplicates()
 
 # categorize the data as 1 or 0 depneding on if the text was of that specific trait
