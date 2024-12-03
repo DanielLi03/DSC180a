@@ -19,6 +19,8 @@ combined_df = pd.concat([first_100, severe_toxic, obscene, threat, insult, ident
 # categorize the data as 1 or 0 depneding on if the text was of that specific trait
 for i in ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']:
     combined_df[i] = combined_df[i].apply(lambda x: round(x))
+
+# rename columns for convenience later
 combined_df = combined_df.rename(columns={'toxic': 'toxicity', 'severe_toxic': 'severe_toxicity', 'obscene': 'obscene', 'threat': 'threat', 'insult': 'insult', 'identity_hate': 'identity_attack'})
 
 # export data into csv file
