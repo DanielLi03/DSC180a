@@ -10,7 +10,6 @@ df = df[['class', 'tweet']].head(400)
 # clean up and adjust the values of the columns
 df['tweet'] = df['tweet'].str.strip('!\' \"RT@')
 df['class'] = 2 - df['class']
-df['class'] = 2 - df['class']
 df['class'] = df['class'].apply(lambda x: 1 if x >= 1 else 0)
 
 # export data into csv file
