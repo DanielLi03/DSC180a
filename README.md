@@ -38,6 +38,12 @@ To run both the short and long toxic tests, activate the anaconda environment th
 python short_toxic_test.py
 ```
 
+If you run into a 'ValueError: numpy.dtype size changed, may indicate binary incompatitbility', you should run
+
+```
+pip install numpy==1.26.4
+```
+
 For the long_toxic_test.py, simply run in your conda environment.
 ```
 python long_toxic_test.py
@@ -78,3 +84,4 @@ Here is a toxic example:
 Notes:
 - While the detoxify and profanity both blocked the same responce in our example, there are prompts that are only blocked by one guardrail and not the other. This is evident from our different test results in the toxicity tests
 - Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the lenght of your prompt).
+- Also note that we have decided to output the results of both guardrails for demonstration purposes.
