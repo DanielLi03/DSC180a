@@ -31,33 +31,54 @@ profanity_check_accuracy = sum(i == j for i, j in zip(profanity_check_results, t
 profanity_check_TN = sum(((i == j) and (j == 0)) for i, j in zip(profanity_check_results, toxicity)) / (len(toxicity) - sum(toxicity))
 profanity_check_TP = sum(((i == j) and (j == 1)) for i, j in zip(profanity_check_results, toxicity)) / (sum(toxicity))
 
+# add profanity_check results to df for convenience
+df['profanity_check_results'] = profanity_check_results
+
+# function to check the accuracy of the profanity_cehck guardrail within each type of toxicity
+def profanity_check_toxic_type_result(col):
+    if len(df[df[col] == 1]) > 0:
+        return sum(i == j for i, j in zip(df[df[col] == 1]['profanity_check_results'], df[df[col] == 1]['toxicity'])) / len(df[df[col] == 1]['toxicity'])
+    else:
+        return 'Not enough data'
+    
+# compile profanity_check_results
+profanity_check_severe_toxicity_accuracy = profanity_check_toxic_type_result('severe_toxicity')
+profanity_check_obscene_accuracy = profanity_check_toxic_type_result('obscene')
+profanity_check_threat_accuracy = profanity_check_toxic_type_result('threat')
+profanity_check_insult_accuracy = profanity_check_toxic_type_result('insult')
+profanity_check_identity_attack_accuracy = profanity_check_toxic_type_result('identity_attack')
+
 # print profanity_check result as a dictionary
-print({'Overall Accuracy': profanity_check_accuracy, 'True Positive Rate': profanity_check_TP, 'True Negative Rate': profanity_check_TN})
+print({'Overall Accuracy': profanity_check_accuracy, 'True Positive Rate': profanity_check_TP, 'True Negative Rate': profanity_check_TN, \
+'Severe Toxicity Accuracy': profanity_check_severe_toxicity_accuracy, 'Obscene Accuracy': profanity_check_obscene_accuracy, \
+'Threat Accuracy': profanity_check_threat_accuracy, 'Insult Accuracy': profanity_check_insult_accuracy, \
+'Identity Attack Accuracy': profanity_check_identity_attack_accuracy})
 
 # run detoxify test and organize outputs
 detoxify_results = detoxify_check(list(text_data))
 df_results = pd.DataFrame(detoxify_results)
-for i in ['toxicity', 'severe_toxicity', 'obscene', 'threat', 'insult', 'identity_attack']:
+for i in ['toxicity']:
     df_results[i] = df_results[i].apply(lambda x: round(x))
+df['detoxify_results'] = df_results['toxicity']
 
 # retrieve results for detoxify tests
-detoxify_accuracy = sum(i == j for i, j in zip(df_results['toxicity'], toxicity)) / len(toxicity)
-detoxify_TN = sum(((i == j) and (j == 0)) for i, j in zip(df_results['toxicity'], toxicity)) / (len(toxicity) - sum(toxicity))
-detoxify_TP = sum(((i == j) and (j == 1)) for i, j in zip(df_results['toxicity'], toxicity)) / (sum(toxicity))
+detoxify_accuracy = sum(i == j for i, j in zip(df['detoxify_results'], toxicity)) / len(toxicity)
+detoxify_TN = sum(((i == j) and (j == 0)) for i, j in zip(df['detoxify_results'], toxicity)) / (len(toxicity) - sum(toxicity))
+detoxify_TP = sum(((i == j) and (j == 1)) for i, j in zip(df['detoxify_results'], toxicity)) / (sum(toxicity))
 
 # function to check the accuracy of the detoxify guardrail within each type of toxicity
-def toxic_type_result(col):
+def detoxify_toxic_type_result(col):
     if len(df[df[col] == 1]) > 0:
-        return sum(i == j for i, j in zip(df_results[df_results[col] == 1]['toxicity'], df[df[col] == 1]['toxicity'])) / len(df[df[col] == 1]['toxicity'])
+        return sum(i == j for i, j in zip(df[df[col] == 1]['detoxify_results'], df[df[col] == 1]['toxicity'])) / len(df[df[col] == 1]['toxicity'])
     else:
         return 'Not enough data'
 
 # compile detoxify results
-detoxify_severe_toxicity_accuracy = toxic_type_result('severe_toxicity')
-detoxify_obscene_accuracy = toxic_type_result('obscene')
-detoxify_threat_accuracy = toxic_type_result('threat')
-detoxify_insult_accuracy = toxic_type_result('insult')
-detoxify_identity_attack_accuracy = toxic_type_result('identity_attack')
+detoxify_severe_toxicity_accuracy = detoxify_toxic_type_result('severe_toxicity')
+detoxify_obscene_accuracy = detoxify_toxic_type_result('obscene')
+detoxify_threat_accuracy = detoxify_toxic_type_result('threat')
+detoxify_insult_accuracy = detoxify_toxic_type_result('insult')
+detoxify_identity_attack_accuracy = detoxify_toxic_type_result('identity_attack')
 
 # output detoxify results
 print({'Overall Accuracy': detoxify_accuracy, 'True Positive Rate': detoxify_TP, 'True Negative Rate': detoxify_TN, \
