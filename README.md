@@ -33,13 +33,6 @@ conda env create -f environment.yml
 
 By now, all our packages should be installed in our anaconda environment so we should be ready to run the code now (see How to Run Tests).
 
-If for some reason this doesn't work, you can manually create a conda environment by first opening an anaconda terminal, then typing in
-```
-conda create -n DSC180a-Daniel-Li python=3.9.11
-```
-
-Next, activate the conda environmnet
-
 ## How to Run Tests
 To run both the Twitter and Wikipedia toxic tests of our guardrails, activate the anaconda environment that you've created in an anaconda terminal. We do this by typing in
 ```
