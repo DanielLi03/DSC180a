@@ -22,10 +22,10 @@ To run this project, we need to install both Python and Anaconda onto our device
 First we need to clone the respository. Open up a terminal, navigate to the desired folder and clone the respository as follows:
 
 ```
-git clone https://github.com/DanielLi03/DSC180a-Q1.git
+git clone https://github.com/DanielLi03/DSC180a.git
 ```
 
-Next we need to create a conda environment. Open up an anaconda terminal, and run the following command
+Next we need to create a conda environment. Open up an anaconda terminal, navigate to the cloned repository and run the following command
 
 ```
 conda env create -f environment.yml
@@ -48,7 +48,7 @@ conda activate DSC180a-Daniel-Li
 
 Navigate to the github repo on your local device in the conda terminal, and run the python file as follows:
 ```
-python twitter_toxic_test.py
+python twitter_toxic_tests.py
 ```
 
 Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
@@ -57,7 +57,7 @@ Note: these tests will take several minutes to run, and might download some ML m
 
 For the wiki_toxic_test.py, simply run in your conda environment.
 ```
-python wiki_toxic_test.py
+python wiki_toxic_tests.py
 ```
 
 Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
