@@ -12,7 +12,7 @@ def py_profanity_check(text):
 
 # function to run the detoxify guardrail
 def detoxify_check(text):
-    return Detoxify('unbiased').predict(text)
+    return Detoxify('original').predict(text)
 
 # get text data and toxicity score
 text_data = df['tweet']

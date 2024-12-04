@@ -12,7 +12,7 @@ def py_profanity_check(text):
 
 # function to run the detoxify guardrail
 def detoxify_check(text):
-    return Detoxify('unbiased').predict(text)
+    return Detoxify('original').predict(text)
 
 # get the sample text
 text_data = df['comment_text']
