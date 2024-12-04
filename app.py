@@ -44,10 +44,13 @@ def main():
     # main logic of the app
     if st.button("Translate"):
         if len(text_area) > 0:
+            # instructions
             st.info("Input: " + text_area)
+            # translated response without guardrails
             st.warning("Translation Response Without Guardrails")
             without_gruardrails_result = without_gruardrails(text_area)
             st.success(without_gruardrails_result)
+            # translated response with guardrails
             detoxify_result = detoxify_test(text_area)
             profanity_result = profanity_test(text_area)
             tests(detoxify_result, profanity_result, without_gruardrails_result)
