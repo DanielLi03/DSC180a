@@ -57,7 +57,7 @@ Note: these tests will take several minutes to run, and might download some ML m
 
 For the wiki_toxic_test.py, simply run in your conda environment.
 ```
-python long_toxic_test.py
+python wiki_toxic_test.py
 ```
 
 Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
