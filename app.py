@@ -37,7 +37,7 @@ def tests(detoxify, profanity, translation):
 # main code to run the app
 def main():
     # title and instructions
-    st.title("Guardrails Implementation in Translation LLMs")
+    st.title("Profanity Check and Detoxify Guardrails Implementation in English to French Translation LLMs")
 
     text_area = st.text_area("Enter your text that you want to translate!")
 
