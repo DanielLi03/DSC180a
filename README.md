@@ -44,7 +44,7 @@ Navigate to the github repo on your local device in the conda terminal, and run 
 python twitter_toxic_tests.py
 ```
 
-Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
+Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal. The first dictionary represents the accuracy, TPR, and TNR of the Profanity Check Guardrail. The second dictionary represents the accuracy, TPR, and TNR of the Detoxify Guardrail. The third dictionary represents the accuracy, TPR, and TNR of the combined Guardrail:
 
 ![twitter toxic test results](/images/twitter_test_results.png)
 
@@ -53,7 +53,7 @@ For the wiki_toxic_test.py, simply run in your conda environment.
 python wiki_toxic_tests.py
 ```
 
-Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
+Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal.:
 
 ![wikipedia toxic test results](/images/wiki_test_results.png)
 
