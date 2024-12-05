@@ -14,4 +14,4 @@ combined_df['tweet'] = combined_df['tweet'].str.strip('!\' \"RT@')
 combined_df['class'] = combined_df['class'].apply(lambda x: 1 if x <= 1 else 0)
 
 # export data into csv file
-combined_df.to_csv('cleaned_data_twitter.csv', index=False)
+combined_df.to_csv('data/cleaned_data_twitter.csv', index=False)

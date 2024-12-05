@@ -20,4 +20,4 @@ combined_df = pd.concat([first_100, severe_toxic, obscene, threat, insult, ident
 combined_df = combined_df.rename(columns={'toxic': 'toxicity', 'severe_toxic': 'severe_toxicity', 'obscene': 'obscene', 'threat': 'threat', 'insult': 'insult', 'identity_hate': 'identity_attack'})
 
 # export data into csv file
-combined_df.to_csv('cleaned_data_wiki.csv', index=False)
+combined_df.to_csv('data/cleaned_data_wiki.csv', index=False)
