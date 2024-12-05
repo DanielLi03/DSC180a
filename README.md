@@ -30,7 +30,7 @@ Next we need to create a conda environment. Open up an anaconda terminal, naviga
 conda env create -f environment.yml
 ```
 
-By now, all our packages should be installed in our anaconda environment so we should be ready to run the code now (see How to Run Tests).
+By now, all our packages should be installed in our anaconda environment so we should be ready to run the code now (see How to Run Tests). Note that since I already provided the cleaned the datasets, I will not be showing you how to run the data_preprocess python files. If do choose to run it, simply open up your conda terminal, activate your environment, navigate to the github repo, and run `python data_preprocess_twitter.py` or `pythondata_preprocess_wiki.py`. This code will simply recreate the cleaned_data_twitter.csv and cleaned_data_wiki.csv in the data folder that I have already provided.
 
 ## How to Run Tests
 To run both the Twitter and Wikipedia toxic tests of our guardrails, activate the anaconda environment that you've created in an anaconda terminal. We do this by typing in
