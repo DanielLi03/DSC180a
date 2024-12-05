@@ -1,7 +1,7 @@
 # DSC180a
 
 ## Project Overview
-My Quarter 1 Guardrail Replication Project focused on implementing a profanity and toxicity guardrail on basic English to French translation app. The LLM I used was Helsinki-NLP/opus-mt-en-fr on hugging face, which is a powerful translation LLM that is part of the Opus family, hosted on hugging face. The particular model I used translates English language to French. My intended idea of the translation app is so that you can use it to translate tweets from English to French, while censoring toxic or hateful tweets during the translation process. This way, I can promote a positive social media environment across multi-lingual barriers, even in an app like Twitter. As such, I focused on toxicity guardrails that were trained on twitter datasets, which classified each tweet as toxic or not. I used two guardrails called Detoxify and Profanity_check. Detoxify is ML model trained on the Jigsaw Unintended Bias in Toxicity Classification Dataset and the Toxic Comment Classification Challenge, both on Kaggle. Profanity_check is an ML model trained on a curated dataset hosted on github at t-davidson/hate-speech-and-offensive-language, as well as the Toxic Comment Classification Challenge on Kaggle. My project shows the effectiveness of both guardrails, as well as their synergy together to provide an efficient and function guardrail for a translation app
+My Quarter 1 Guardrail Replication Project focused on implementing a profanity and toxicity guardrail on basic English to French translation app. The LLM I used was Helsinki-NLP/opus-mt-en-fr on hugging face, which is a powerful translation LLM that is part of the Opus family, hosted on hugging face. The particular model I used translates English language to French. My intended idea of the translation app is so that you can use it to translate tweets from English to French, while censoring toxic or hateful tweets during the translation process. This way, I can promote a positive social media environment across multi-lingual barriers, even in an app like Twitter. As such, I focused on toxicity guardrails that were trained on twitter tweets and wikipedia comment datasets, which classified each text as toxic or not. I used two guardrails called Detoxify and Profanity_check. Detoxify is ML model trained on the Jigsaw Unintended Bias in Toxicity Classification Dataset and the Toxic Comment Classification Challenge, both on Kaggle. Profanity_check is an ML model trained on a curated dataset hosted on github at t-davidson/hate-speech-and-offensive-language, as well as the Toxic Comment Classification Challenge on Kaggle. My project shows the effectiveness of both guardrails, as well as their synergy together to provide an efficient and functional guardrail for a translation app
 
 ## Files Overview
 
@@ -44,7 +44,7 @@ Navigate to the github repo on your local device in the conda terminal, and run 
 python twitter_toxic_tests.py
 ```
 
-Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
+Note: these tests will take several minutes to run, and might download some ML model if it's your first time running it. There will also be warnings, but they shouldn't affect the ability to run the code at all. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal. The first dictionary represents the accuracy, TPR, and TNR of the Profanity Check Guardrail. The second dictionary represents the accuracy, TPR, and TNR of the Detoxify Guardrail. The third dictionary represents the accuracy, TPR, and TNR of the combined Guardrail:
 
 ![twitter toxic test results](/images/twitter_test_results.png)
 
@@ -53,7 +53,7 @@ For the wiki_toxic_test.py, simply run in your conda environment.
 python wiki_toxic_tests.py
 ```
 
-Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal:
+Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal. The first dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the Profanity Check Guardrail. The second dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the Detoxify Guardrail. The second dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the combined Guardrail:
 
 ![wikipedia toxic test results](/images/wiki_test_results.png)
 
@@ -90,4 +90,4 @@ Here is an example that get flagged by only Profanity Check:
 
 ![Profanity Check translation example](/images/profanity.png)
 
-Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the length of your prompt).
+Note that the first time you run this app, it may take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the length of your prompt). You can play around with various inputs to test the limits of Guardrails in my Translation App!
