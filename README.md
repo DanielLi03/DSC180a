@@ -53,7 +53,7 @@ For the wiki_toxic_test.py, simply run in your conda environment.
 python wiki_toxic_tests.py
 ```
 
-Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal.:
+Again, this test might take several minutes to run. Ignoring the warnings, the expected output after running both python in the terminal should be three dictionaries containing various metrics on the accuracy of the Profanity Check, Detoxify, and Combined Guardrails respectively. If the code has run correctly, we should expect to see the following result in the terminal. The first dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the Profanity Check Guardrail. The second dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the Detoxify Guardrail. The second dictionary contains the accuracy, TPR, TNR, and accuracy of the other toxicity traits of the combined Guardrail:
 
 ![wikipedia toxic test results](/images/wiki_test_results.png)
 
