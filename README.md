@@ -24,7 +24,7 @@ First we need to clone the respository. Open up a terminal, navigate to the desi
 git clone https://github.com/DanielLi03/DSC180a.git
 ```
 
-Next we need to create a conda environment. Open up an anaconda terminal, navigate to the cloned repository (it should be called DSC180a) and run the following command
+Next we need to create a conda environment. Open up an anaconda terminal. In the terminal, navigate to the cloned repository (it should be called DSC180a) and run the following command
 
 ```
 conda env create -f environment.yml
