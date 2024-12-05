@@ -2,7 +2,7 @@ import pandas as pd
 import transformers as t
 
 # read the labeled_data.csv from t-davidson/hate-speech-and-offensive-language
-df = pd.read_csv('labeled_data.csv')
+df = pd.read_csv('data/labeled_data.csv')
 
 # retrieve the first 200 rows of each class and relevant columns
 toxic = df[df['class'] != 2][['class', 'tweet']].head(200)

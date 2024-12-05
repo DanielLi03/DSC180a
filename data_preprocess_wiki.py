@@ -2,7 +2,7 @@ import pandas as pd
 import transformers as t
 
 # read the train.csv.zip from Toxic Comment Classification Challenge on Kaggle
-df = pd.read_csv('train.csv.zip', compression='zip')
+df = pd.read_csv('data/train.csv.zip', compression='zip')
 
 # get useful columns
 df = df[['comment_text', 'toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']]
