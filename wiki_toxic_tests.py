@@ -4,7 +4,7 @@ from detoxify import Detoxify
 from profanity_check import predict
 
 # read cleaned subset dataset taken from Toxic Comment Classification Challenge on Kaggle
-df = pd.read_csv('cleaned_data_wiki.csv')
+df = pd.read_csv('data/cleaned_data_wiki.csv')
 
 # function to run the basic python guardrail
 def py_profanity_check(text):

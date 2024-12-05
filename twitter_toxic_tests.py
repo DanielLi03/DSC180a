@@ -4,7 +4,7 @@ from detoxify import Detoxify
 from profanity_check import predict
 
 # read cleaned subset dataset taken from t-davidson/hate-speech-and-offensive-language
-df = pd.read_csv('cleaned_data_twitter.csv')
+df = pd.read_csv('data/cleaned_data_twitter.csv')
 
 # function to run the basic python guardrail
 def py_profanity_check(text):
