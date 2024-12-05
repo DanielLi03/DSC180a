@@ -6,9 +6,8 @@ My Quarter 1 Guardrail Replication Project focused on implementing a profanity a
 ## Files Overview
 
 - The images folder contains all the images used in this README file
+- The data folder contains all the raw and cleaned data that we used in our data_preprocessing and testing python files
 - app.py contains all the code for the translation app. We run this to see the actual app.
-- cleaned_data_twitter.csv contains the twitter dataset used to test the effectiveness of the guardrails
-- cleaned_data_wiki.csv contains the wikipedia dataset used to test the effectiveness of the guardrails
 - data_preprocess_twitter.py contains the code used to generate the cleaned_data_twitter.csv
 - data_preprocess_wiki.py contains the code used to generate the cleaned_data_wiki.csv
 - environment.yml contains all the information of our anaconda environment. Use this to create the anaconda environment
