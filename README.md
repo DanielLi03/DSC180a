@@ -98,7 +98,7 @@ Note that the first time you run this app, it may take a couple minutes becuase 
 In your anaconda terminal, deactivate the environment with
 
 ```
-conda deactivate DSC180a-Daniel-Li```
+conda deactivate DSC180a-Daniel-Li
 ```
 To remove the conda environment, simply run
 ```
