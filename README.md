@@ -90,4 +90,4 @@ Here is an example that get flagged by only Profanity Check:
 
 ![Profanity Check translation example](/images/profanity.png)
 
-Note that the first time you run this app, it will take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the length of your prompt).
+Note that the first time you run this app, it may take a couple minutes becuase the LLM translation model is being installed. However, after the first instance of running the app, it should take much less time (maybe a minute or two at most, depending on the length of your prompt). You can play around with various inputs to test the limits of Guardrails in my Translation App!
